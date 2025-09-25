@@ -23,4 +23,4 @@ const sumaDeEdades = personas.reduce((acumulador, persona) => {
 }, 0);
 
 console.log("3. Suma de edades con .reduce():");
-console.log(`La suma total de las edades es: ${sumaDeEdades}`); // 85
+console.log(`La suma total de las edades es: ${sumaDeEdades}`); 
