@@ -31,10 +31,10 @@ export default function ContadorScreen() {
 // 3. Estilos: Zona estetica y posicionamiento 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, //Asignar espacio disponible en la vista 
-    backgroundColor: '#331296ff', //Color de fondo
-    alignItems: 'center', //Centrado
-    justifyContent: 'center', //Justificacion del texto 
+    flex: 1,  
+    backgroundColor: '#331296ff', 
+    alignItems: 'center', 
+    justifyContent: 'center',  
   },
 texto:{
 color:'#fafafaff',
