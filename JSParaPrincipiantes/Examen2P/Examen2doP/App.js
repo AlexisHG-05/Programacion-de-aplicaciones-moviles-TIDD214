@@ -39,6 +39,7 @@ export default function Examen2P (){
           <Text style={styles.title}>Correo:Ah9267992@gmail.com.</Text>
           <Text style={styles.title}>Numero:7122754948</Text>
           
+          <Button title="Contacto" onPress={() => {}} />
 
         </View>
       </ImageBackground>

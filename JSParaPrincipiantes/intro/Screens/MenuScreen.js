@@ -9,7 +9,10 @@ import Repaso1Screen from './Repaso1Screen'
 import ScrollViewScreen from './ScrollViewScreen'
 import ActivarIndicadorScreen from './ActivarIndicadorScreen'
 import LoginScreen from './LoginScreen'
-import RegistroScreen from './RegistroScreen'
+import RegistroScreen from './RegistroScreen' 
+// Corregí un carácter invisible que había en esta línea de importación
+import FlatListScreen from './FlatListScreen' 
+
 
 export default function MenuScreen () {
 
@@ -24,6 +27,8 @@ export default function MenuScreen () {
             return <LoginScreen />;
         case 'BotonInferior' :
             return <BotonInferiorScreen/>;
+        case 'FlatList' : // <-- El case espera 'FlatList' (con L mayúscula)
+            return <FlatListScreen/>; 
         case 'ActivarIndicador' :
             return <ActivarIndicadorScreen/>; 
         case 'ScrollView ' :
@@ -40,31 +45,36 @@ export default function MenuScreen () {
         default:
             return (
                 <View style={styles.container}> 
-                       <Text style={styles.titulo}>Menu de practicas</Text>
-                    
-                         
-         <View style={styles.contenedorBotones}>
-       
-    <Button onPress={()=>setScreen('contador')} title='Pract:Contador' />
-        <Button onPress={()=>setScreen('botones')} title='Pract:Buttons & switch' />
-         <Button onPress={()=>setScreen('EntradaDeTexto')} title='Pract:Text Input & Alert' />
-            <Button onPress={()=>setScreen('ImageBackground')} title='Pract: ImageBackground & SlapshScreen ' />
-                <Button onPress={()=>setScreen('ScrollView ')} title='Pract:ScrollView' />
-                    <Button onPress={()=>setScreen('ActivarIndicador')} title='Pract:ActivityIndicator' />
-                         <Button onPress={()=>setScreen('Flatlist')} title='Pract:FlatList y Section List' />
-                             <Button onPress={()=>setScreen('Modal')} title='Pract:Modal' />
-                                 <Button onPress={()=>setScreen('BotonInferior')} title='Pract:Bottom Sheet' />
-                                     <Button onPress={()=>setScreen('Repaso1')} title='Pract:Repaso1' />
-                                        <Button onPress={()=>setScreen('Login')} title='Login' />
-                                             <Button onPress={()=>setScreen('Registro')} title='Registro' />
-        </View>
-        </View>
+                    <Text style={styles.titulo}>Menu de practicas</Text>
+                
+                        
+                <View style={styles.contenedorBotones}>
+        
+            <Button onPress={()=>setScreen('contador')} title='Pract:Contador' />
+                <Button onPress={()=>setScreen('botones')} title='Pract:Buttons & switch' />
+                <Button onPress={()=>setScreen('EntradaDeTexto')} title='Pract:Text Input & Alert' />
+                    <Button onPress={()=>setScreen('ImageBackground')} title='Pract: ImageBackground & SlapshScreen ' />
+                        <Button onPress={()=>setScreen('ScrollView ')} title='Pract:ScrollView' />
+                            <Button onPress={()=>setScreen('ActivarIndicador')} title='Pract:ActivityIndicator' />
+                                
+                                {/* ¡AQUÍ ESTÁ LA CORRECCIÓN! 
+                                    Cambié 'Flatlist' a 'FlatList' para que coincida con el case del switch.
+                                */}
+                                <Button onPress={()=>setScreen('FlatList')} title='Pract:FlatList y Section List' />
 
-    )
+                                <Button onPress={()=>setScreen('Modal')} title='Pract:Modal' />
+                                    <Button onPress={()=>setScreen('BotonInferior')} title='Pract:Bottom Sheet' />
+                                        <Button onPress={()=>setScreen('Repaso1')} title='Pract:Repaso1' />
+                                            <Button onPress={()=>setScreen('Login')} title='Login' />
+                                                <Button onPress={()=>setScreen('Registro')} title='Registro' />
+                </View>
+                </View>
+
+        )
 
     }
     
-  }
+}
 const styles = StyleSheet.create({
 container: {
     flex: 1, //Asignar espacio disponible en la vista 
@@ -90,9 +100,9 @@ textDecorationLine: 'underline',
 },
 contenedorBotones:{
 marginTop:30,
-flexDirection: 'center',
+flexDirection: 'column', // Cambiado a 'column' para que los botones se apilen bien
 gap: 15,
 }
- }
+}
 );
 
