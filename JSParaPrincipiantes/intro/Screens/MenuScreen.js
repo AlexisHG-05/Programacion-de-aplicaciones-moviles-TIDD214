@@ -10,8 +10,8 @@ import ScrollViewScreen from './ScrollViewScreen'
 import ActivarIndicadorScreen from './ActivarIndicadorScreen'
 import LoginScreen from './LoginScreen'
 import RegistroScreen from './RegistroScreen' 
-// Corregí un carácter invisible que había en esta línea de importación
 import FlatListScreen from './FlatListScreen' 
+import ModalScreen from './ModalScreen'
 
 
 export default function MenuScreen () {
@@ -27,7 +27,9 @@ export default function MenuScreen () {
             return <LoginScreen />;
         case 'BotonInferior' :
             return <BotonInferiorScreen/>;
-        case 'FlatList' : // <-- El case espera 'FlatList' (con L mayúscula)
+         case 'Modal' : 
+            return <ModalScreen/>; 
+        case 'FlatList' : 
             return <FlatListScreen/>; 
         case 'ActivarIndicador' :
             return <ActivarIndicadorScreen/>; 
@@ -56,13 +58,8 @@ export default function MenuScreen () {
                     <Button onPress={()=>setScreen('ImageBackground')} title='Pract: ImageBackground & SlapshScreen ' />
                         <Button onPress={()=>setScreen('ScrollView ')} title='Pract:ScrollView' />
                             <Button onPress={()=>setScreen('ActivarIndicador')} title='Pract:ActivityIndicator' />
-                                
-                                {/* ¡AQUÍ ESTÁ LA CORRECCIÓN! 
-                                    Cambié 'Flatlist' a 'FlatList' para que coincida con el case del switch.
-                                */}
                                 <Button onPress={()=>setScreen('FlatList')} title='Pract:FlatList y Section List' />
-
-                                <Button onPress={()=>setScreen('Modal')} title='Pract:Modal' />
+                                  <Button onPress={()=>setScreen('Modal')} title='Pract:Modal' />
                                     <Button onPress={()=>setScreen('BotonInferior')} title='Pract:Bottom Sheet' />
                                         <Button onPress={()=>setScreen('Repaso1')} title='Pract:Repaso1' />
                                             <Button onPress={()=>setScreen('Login')} title='Login' />
