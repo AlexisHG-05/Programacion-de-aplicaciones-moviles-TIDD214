@@ -68,7 +68,6 @@ export default function BotonInferior() {
         ]}
       />
 
-      {/* Bottom Sheet */}
       <Animated.View
         style={[
           styles.bottomSheet,
