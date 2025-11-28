@@ -24,7 +24,7 @@ export class UsuarioController {
         }
     }
 
-    // Crear usuario (INSERT)
+        // Crear usuario (INSERT)
     async crearUsuario(nombre) {
         try {
             // 1. Validar datos usando el Modelo
@@ -47,6 +47,28 @@ export class UsuarioController {
             throw error;
         }
     }
+ 
+      async actualizarUsuario(id, nombre) {
+        try {
+            Usuario.validar(nombre);
+            await DatabaseService.update(id, nombre);
+            this.notifyListeners();
+        } catch (error) {
+            console.error("Error al actualizar usuario:", error);
+            throw error;
+        }
+    }
+
+    async eliminarUsuario(id) {
+        try {
+            await DatabaseService.delete(id);
+            this.notifyListeners();
+        } catch (error) {
+            console.error("Error al eliminar usuario:", error);
+            throw error;
+        }
+    }
+
 
     // --- Sistema de Observadores ---
     // Esto permite que la pantalla se actualice sola cuando guardamos un dato
@@ -60,5 +82,5 @@ export class UsuarioController {
 
     notifyListeners() {
         this.listeners.forEach(callback => callback());
-    }
+    }
 }
