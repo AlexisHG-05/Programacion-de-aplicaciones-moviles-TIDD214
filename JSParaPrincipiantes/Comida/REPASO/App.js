@@ -42,7 +42,7 @@ export default function ExamenFinal() {
   if (loading) {
     return (
       <View style={styles.splash}>
-        <Text style={styles.splashText}>Bienvenido a Sabor Mexicano :))</Text>
+        <Text style={styles.splashText}>Bienvenido a Sabor Mexicano 🌮</Text>
       </View>
     );
   }
