@@ -1,101 +1,156 @@
-import React, {useState, useEffect}  from 'react';
-import {View, Text, StyleSheet, ImageBackground, Button, SafeAreaView } from 'react-native';
-// splashcreen, iMAGEBACKGROUND,
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, ImageBackground, Button, SafeAreaView, Alert, Platform, ScrollView } from 'react-native';
 
-export default function Examen2P (){
-  const [showSplash, setShowplash] = useState (true);
+export default function Examen2P() {
+  const [showSplash, setShowplash] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowplash(false);
     }, 4000);
     return () => clearTimeout(timer);
-}, []);
- if (showSplash) {
-   return (
+  }, []);
+
+  if (showSplash) {
+    return (
       <View style={styles.splashContainer}>
         <Text style={styles.splashText}>Bienvenido a mi perfil</Text>
       </View>
     );
   }
-  
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      
-      {}
       <ImageBackground
         source={{
           uri: 'https://tse3.mm.bing.net/th/id/OIP.UM9VCCoPqFyf6mrKp2-RfQHaHa?rs=1&pid=ImgDetMain&o=7&rm=300',
-        }} 
-        style={styles.background} 
+        }}
+        style={styles.background}
       >
-        {}
-        <View style={styles.overlay}>
-          {}
-          <Text style={styles.title}>Alexis Hernandez Gutierrez</Text>
-          <Text style={styles.title}>Ingeniero en Tecnologias de la informacion e innovacion digital</Text>
-          <Text style={styles.title}>Me gusta demasiado escuchar musica en todo momento, cuando programo o investigo nuevos temas relacionados a mi carrera.</Text>
-          <Text style={styles.title}>Correo:Ah9267992@gmail.com.</Text>
-          <Text style={styles.title}>Numero:7122754948</Text>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
           
-          <Button title="Contacto" onPress={() => {}} />
+          {/* Este View es el cuadro semitransparente (Punto 3) */}
+          <View style={styles.container}>
+            
+            <Text style={styles.name}>Alexis Hernandez Gutierrez</Text>
+            <Text style={styles.profession}>Ingeniero en Tecnologías de la Información</Text>
+            
+            {/* Texto limpio sin etiquetas basura intermedias */}
+            <Text style={styles.bio}>
+              Soy un estudiante apasionado por la tecnología y el desarrollo de software,
 
-        </View>
+                         <Text style={styles.name}></Text>
+ 
+              actualmente formándome en Tecnologías de la Información e Innovación Digital. 
+                          <Text style={styles.name}></Text>
+
+              A lo largo de mi carrera, he desarrollado una sólida base en lógica de programación, 
+                          //n<Text style={styles.name}></Text>
+
+              algoritmos y creación de aplicaciones móviles. Me considero una persona autodidacta y curiosa; 
+                          <Text style={styles.name}></Text>
+
+              siempre estoy investigando sobre las últimas tendencias tecnológicas.
+            </Text>
+            
+            <Text style={styles.contact}> Correo:Ah9267992@gmail.com</Text>
+            
+            <Text style={styles.contact}> Numero:7122754948</Text>
+
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Editar perfil"
+                color="#007AFF" 
+                onPress={() => {
+                  if (Platform.OS === 'web') {
+                    const confirmacion = window.confirm("¿Deseas guardar los cambios?");
+                    confirmacion ? alert("¡Guardado!") : alert("Cancelado");
+                  } else {
+                    Alert.alert(
+                      "Editar Perfil",
+                      "¿Deseas guardar los cambios?",
+                      [
+                        { text: "Cancelar", style: "cancel", onPress: () => console.log("Cancelado") },
+                        { text: "Guardar", onPress: () => console.log("Guardado") }
+                      ]
+                    );
+                  }
+                }}
+              />
+            </View>
+
+          </View>
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
-
-  
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  splashContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#253964ff',
     justifyContent: 'center',
-  },splashContainer: {
-    flex: 1, 
-    backgroundColor: '#000000ff', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
+    alignItems: 'center',
   },
-
-  
   splashText: {
-    fontSize: 24, 
-    color: '#fff', 
+    fontSize: 24,
+    color: '#fff',
   },
-
-  
   background: {
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
+    flex: 1,
+    width: '100%',
+    height: '100%',
   },
-
-  
-  overlay: {
-    backgroundColor: 'rgba(0,0,0,0.5)', 
-    padding: 20, 
-    borderRadius: 10, 
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center', // Centra verticalmente si sobra espacio
+    alignItems: 'center',     // Centra horizontalmente el contenedor
+    paddingVertical: 40,      // Un poco de aire arriba y abajo
   },
-
-  
-  title: {
-    fontSize: 28, 
-    color: '#fff', 
+  container: {
+    // AQUI ESTA LA MAGIA DEL 3/4 (75%)
+    width: '75%', 
+    backgroundColor: 'rgba(82, 74, 74, 0.85)', // Un poco más sólido para que "se note bien"
+    borderRadius: 20,         // Bordes redondeados para estética
+    padding: 20,              // Relleno interno equilibrado
+    alignItems: 'center',
+    
+    // Sombras para que resalte del fondo
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  name: {
+    fontSize: 50,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginBottom: 10, 
-    textAlign: 'center', 
   },
-    input: {
-    height: 50,
-    borderColor: 'gray',
-    borderWidth: 1, //Sirve para ver el borde del input
-    borderRadius: 8, // Bordes redondeados
-    paddingHorizontal: 15, // Espacio interno a los lados
-    marginBottom: 20, // Espacio debajo del input
-    fontSize: 16,
+  profession: {
+    fontSize: 45,
+    color: '#add8e6', 
+    textAlign: 'center',
+    marginBottom: 20, 
+  },
+  bio: {
+    fontSize: 35,
+    color: '#fff',
+    textAlign: 'justify', // Justificado se ve más ordenado en bloque
+    marginBottom: 90, 
+    lineHeight: 24,
+  },
+  contact: {
+    fontSize: 50,
+    color: '#FFD700', // Un color dorado para que resalte el contacto
+    marginBottom: 95,
+  },
+  buttonContainer: {
+    marginTop: 250, // Reducido de 400 a 30, suficiente para separar
+    width: '100%',
+    marginBottom: 40,
   },
 });
